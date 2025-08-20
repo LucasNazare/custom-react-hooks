@@ -8,6 +8,7 @@ type Props = {
 type Dialog = {
   open: boolean;
   loading: boolean;
+  setOpen: (open: boolean) => void;
   locked: boolean;
   toggleDialog: () => void;
   closeDialog: () => void;
@@ -56,6 +57,7 @@ export default function useDialog({ onConfirm, onClose }: Props): Dialog {
 
   return {
     open,
+    setOpen,
     loading,
     locked,
     toggleDialog,
