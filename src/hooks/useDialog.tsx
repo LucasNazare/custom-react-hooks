@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 type Props = {
-  onConfirm: () => void;
+  onConfirm?: () => void;
   onClose?: () => void;
 };
 
@@ -19,10 +19,11 @@ type Dialog = {
   unlockDialog: () => void;
 };
 
-export default function useDialog({ onConfirm, onClose }: Props): Dialog {
+export default function useDialog(props: Props = {}): Dialog {
   const [open, setOpen] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [locked, setLocked] = useState<boolean>(false);
+  const { onConfirm = () => {}, onClose } = props;
 
   const toggleDialog = () => {
     setOpen((prev) => !prev);
